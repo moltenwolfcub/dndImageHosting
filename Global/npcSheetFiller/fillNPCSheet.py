@@ -1,3 +1,4 @@
+import argparse
 import json
 from os.path import dirname
 
@@ -134,10 +135,17 @@ class SheetFiller:
 			self.character = json.load(f)
 
 if __name__ == '__main__':
-	file = input("filename: ").strip()#.removesuffix(".json")
+	parser = argparse.ArgumentParser(
+		prog= "npcSheetFiller",
+		description= "Generates DnD NPC sheets based off of a json file"
+	)
+	parser.add_argument("file", help="the json file that will be loaded and generated from.")
+	args = parser.parse_args()
+
+	# file = input("filename: ").strip()#.removesuffix(".json")
 	# file = "dariusBlack"
 
 	sf = SheetFiller()
-	sf.FillSheet(file)
+	sf.FillSheet(args.file)
 
 	print("Successfully filled sheet")
