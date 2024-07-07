@@ -58,6 +58,9 @@ class SheetFiller:
 				allLines.append(" ".join(line))
 				line = []
 
+				for _ in range(word.count("\n")-1):
+					allLines.append(" ".join(line))
+
 				allWords[0] = word.replace("\n", "")
 
 			elif self.genFont(100).getlength(newText) > boxWidth:
